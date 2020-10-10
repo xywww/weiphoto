@@ -1,0 +1,29 @@
+{
+    "name": "wei-photo",
+    "version": "0.1.3",
+    "private": false,
+    "main": "lib/index/index.js",
+    "keyword": "mapLibTest",
+    "description": "vue",
+    "author": "xuyawei",
+    "files": [
+        "lib"
+    ],
+    "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build"
+    },
+    "dependencies": {
+        "core-js": "^2.6.5",
+        "vue": "^2.6.10",
+        "wei-photo-js": "^1.0.3",
+        "vue-router": "^3.0.3"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^3.9.0",
+        "@vue/cli-service": "^3.9.0",
+        "less": "^3.0.4",
+        "less-loader": "^4.1.0",
+        "vue-template-compiler": "^2.6.10"
+    }
+}

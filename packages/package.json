@@ -1,0 +1,15 @@
+{
+    "name": "wei-photo",
+    "version": "0.1.4",
+    "private": false,
+    "main": "./index/index.js",
+    "keyword": "vue全景展示",
+    "description": "vue",
+    "author": "xuyawei",
+
+    "dependencies": {
+    },
+    "devDependencies": {
+
+    }
+}
