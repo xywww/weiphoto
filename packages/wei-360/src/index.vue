@@ -10,25 +10,25 @@
 import { Viewer, Animation } from "wei-photo-js";
 import MarkersPlugin from "wei-photo-js/dist/plugins/markers";
 import gyroPlugin from "wei-photo-js/dist/plugins/gyroscope.js";
-import "wei-photo-js/dist/photo-sphere-viewer.css";
+import "wei-photo-js/dist/wei-photo-js.css";
 import "wei-photo-js/dist/plugins/markers.css";
 import canvas from "./canvas";
-export default {
+export default { 
   name: "wei-360",
   props: ["imgList", "type", "speed"],
   data() {
     return {
       defaultlatPer: {
-        longitude: 6.26999,
+        longitude: 6.28318,
       },
       nowRota: null,
     };
   },
-  watch: {
+  watch: { 
     speed(newVal){
       this.$viewer.setOption("moveSpeed", newVal);
     },
-    imgList: {
+    imgList: { 
       handler(newVal) {
         if (newVal && newVal.length !== 0 && this.$viewer) {
           this.initImgData();
@@ -75,15 +75,19 @@ export default {
 
         //监听事件
         this.$viewer.on("position-updated", (e, position) => {
-          let z = parseInt(position.longitude / (6.3 / this.imgList.length));
+          let z = parseInt(position.longitude / ((Math.PI*2) / this.imgList.length));
+
           this.nowRota = z == this.imgList.length ? z - 1 : z;
+
           this.defaultlatPer = position;
+        
+          // console.log(this.$viewer.myRadToDeg(0.02),position.longitude)
         });
         //显示第一帧
         this.$nextTick(() => {
           this.$viewer.rotate({
-            latitude: -0.27713435769187544,
-            longitude: this.defaultlatPer.longitude + 0.00000000001 || 6.26999,
+            latitude: -0,
+            longitude: this.defaultlatPer.longitude || Math.PI*2,
           });
           this.$viewer.startAutorotate();
           setTimeout(() => {

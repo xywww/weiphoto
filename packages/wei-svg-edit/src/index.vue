@@ -80,7 +80,7 @@
 import { Viewer, Animation } from "wei-photo-js";
 import MarkersPlugin from "wei-photo-js/dist/plugins/markers";
 import gyroPlugin from "wei-photo-js/dist/plugins/gyroscope.js";
-import "wei-photo-js/dist/photo-sphere-viewer.css";
+import "wei-photo-js/dist/wei-photo-js.css";
 import "wei-photo-js/dist/plugins/markers.css";
 import { ani1 } from "./js/animation";
 export default {

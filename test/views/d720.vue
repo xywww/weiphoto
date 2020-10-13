@@ -3,7 +3,7 @@
   <div style="text-align:center">
     <div>
       <!-- 720全景 -->
-      <wei-photo
+      <!-- <wei-photo
         style="width:90vw;height:90vh"
         ref="weiPhoto"
         v-wei-photo:photo="options"
@@ -12,11 +12,11 @@
         :panorama.sync="panorama"
         @viewChange="viewClick"
       >
-        <!-- <template slot="loading" slot-scope="{loadNum}"> 
+        <template slot="loading" slot-scope="{loadNum}"> 
           <div style="width:100%;height:100%;background:red">
             {{loadNum}}
           </div>
-        </template> -->
+        </template>
         <wei-markers
           v-for="(item,index) in markers"
           @over="over"
@@ -26,7 +26,7 @@
         >
           <div style="height: 60px;width: 60px;background: aliceblue;">{{item.title}}</div>
         </wei-markers>
-      </wei-photo>
+      </wei-photo> -->
       <!-- svg标记点 -->
       <!-- <wei-svg-edit
         style="position:absolute;width:100%;height:100%"
@@ -40,7 +40,7 @@
       </div>
     </div>
     <!-- 360度旋转 -->
-    <!-- <wei-360 :imgList="imgArr" type="video2" ref="wei360"></wei-360> -->
+    <wei-360 :imgList="imgArr"  type="video" ref="wei360"></wei-360>
   </div>
 </template>
 
