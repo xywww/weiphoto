@@ -1,21 +1,28 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import d720 from './views/d720.vue'
-import d360 from './views/d360.vue'
 Vue.use(Router)
-
 export default new Router({
     mode: 'history',
     base: process.env.BASE_URL,
     routes: [{
-            path: '/',
-            name: 'd720',
-            component: d720
-        },
-        {
-            path: '/d360',
-            name: 'd360',
-            component: d360
-        },
+        path: '/',
+        name: '首页',
+        component: () => import('./views/index')
+    }, {
+        path: '/d360',
+        name: 'd360',
+        component: () => import('./views/d360')
+    },
+    {
+        path: '/d720',
+        name: 'd720',
+        component: () => import('./views/d720')
+    },
+    {
+        path: '/video',
+        name: 'video',
+        component: () => import('./views/video')
+    },
+
     ]
 })

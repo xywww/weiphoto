@@ -12,7 +12,7 @@
     <div class="noTouch" v-if="noTouch"></div>
 
     <!-- marker插槽 -->
-    <div class="maker">
+    <div class="maker" v-if="markersViews">
       <slot></slot>
     </div>
     <div class="userLoadingBox" v-if="loadingStatus && !loadingStatusErr">
@@ -78,10 +78,9 @@
         </div>
         <div class="loadingText">正在加载中...</div>
       </div>
-
-      <div v-if="loadingStatusErr" class="loadErr weiLoadingBox">
-        <div>加载图片失败,请刷新后重试</div>
-      </div>
+    </div>
+    <div v-if="loadingStatusErr" class="loadErr weiLoadingBox">
+      <div>加载图片失败,请刷新后重试</div>
     </div>
   </div>
 </template>
@@ -98,6 +97,7 @@ export default {
   data() {
     return {
       markersPlugin: null,
+      markersViews: false,
       loadingStatus: true,
       //方法加载中
       methodsLoad: false,
@@ -109,6 +109,7 @@ export default {
       loadingStatusErr: false,
       //禁止拖动
       noTouch: false,
+      isDirective: false,
       isSlotLoading: false,
     };
   },
@@ -136,9 +137,8 @@ export default {
           this.loadNum = val;
           if (fun) fun(val);
           //初次开场动画效果
-          if (this.loadNum == 100) {
+          if (this.loadNum == 100 && !this.isOneLoad) {
             setTimeout(() => {
-              if (this.isOneLoad) return;
               //小行星
               if (this.animationType == 1 && this.animationType != "none") {
                 ani1(this.$viewer, this);
@@ -146,6 +146,7 @@ export default {
               } else if (this.animationType != "none") {
                 ani1(this.$viewer, this);
               }
+              this.markersViews = true;
               this.isOneLoad = true;
               this.loadingStatus = false;
             }, 200);
@@ -155,7 +156,10 @@ export default {
           this.loadingStatus = false;
         })
         .catch((e) => {
-          console.error("图片加载失败", e);
+          console.error(
+            "图片加载失败请检查图片路径是否正确,注意：图片不支持跨域加载",
+            e
+          );
           this.loadingStatusErr = true;
           this.loadingStatus = false;
         });
@@ -187,7 +191,8 @@ export default {
       let defaultOptions = {
         container: this.$refs.photo,
         panorama: "",
-        autorotateSpeed: "3rpm",
+        autorotateSpeed: "1rpm",
+        autorotateLat: 0,
         moveSpeed: 2,
         //初始缩放级别
         defaultZoomLvl: 10,
@@ -206,7 +211,7 @@ export default {
             },
           ],
         ],
-        ...animationConfig
+        ...animationConfig,
       };
 
       let options = argoptions || this.options || [];
@@ -262,31 +267,44 @@ export default {
           this.$emit("ready", "1");
         });
       } else {
-        console.error("panorama:初次加载全景图为空");
+        console.warn("panorama:初次加载全景图为空");
       }
       this.$viewer.on("click", (e, data) => {
         this.$emit("viewChange", data);
       });
 
-      this.$viewer.on("select-marker", (e, data) => {
-        console.log(data.id);
-      });
+      // this.$viewer.on("select-marker", (e, data) => {
+      //   console.log(data.id);
+      // });
 
       // this.$viewer.on("img-loader", (e, v) => {
       //   // console.log(v);
       // });
 
+      // this.$viewer.stopAutorotate();
+      // this.$viewer.startAutorotate();
       return {
         setPanorama: this.setPanoramaUrl,
         startGyro: this.startGyro,
         stopGyro: this.stopGyro,
         isGyro: this.isGyro,
-        setOption: this.$viewer.setOption,
+        viewer:this.$viewer,
+        setOption: (o,val) => {
+          this.$viewer.setOption(o,val);
+        },
+        autoRota: () => {
+          this.$viewer.startAutorotate();
+        },
       };
     },
   },
   mounted() {
-    if (this.$scopedSlots.loading()) {
+    this.$nextTick(() => {
+      if (!this.isDirective) {
+        this.inits();
+      }
+    });
+    if (this.$scopedSlots.loading && this.$scopedSlots.loading()) {
       this.isSlotLoading = true;
     } else {
       this.isSlotLoading = false;
@@ -302,6 +320,7 @@ export default {
 @import "./css/index.less";
 .photoContainer {
   position: relative;
+  z-index: 0;
   .loadingContainer {
     position: relative;
     width: 0;

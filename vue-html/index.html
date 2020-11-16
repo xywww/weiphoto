@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style/index.css">
+    <script src="./index/index.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>html版测试</title>
+</head>
+
+<body>
+    <div id="app">
+        <wei-photo style="width:100vw;height:100vh" v-wei-photo:photo="options" :panorama.sync="panorama">
+
+            <wei-markers v-for="(item,index) in markers" :config="item" :key="index">
+                <div style="width:100px;height:20px;background: aliceblue;">{{item.title}}</div>
+            </wei-markers>
+
+            <wei-markers :config="inputPosition">
+                <input type="text" placeholder="请输入名称">
+            </wei-markers>
+            
+        </wei-photo>
+    </div>
+
+    <script>
+        Vue.use(weiPhoto)
+        var app = new Vue({
+            el: '#app',
+            data: {
+                options: {
+                },
+                panorama: '/assets/indexBg.jpg',
+                inputPosition:{
+                    latitude: -0.6951847265465538,
+                    longitude: 0.4576435302000715,
+                },
+                markers: [{
+                    title: "组件1",
+                    latitude: -0.6951847265465538,
+                    longitude: 1.0576435302000715,
+                },
+                {
+                    title: "组件2",
+                    latitude: -0.3853725556846837,
+                    longitude: 0.4663614356302664,
+                }]
+            }, 
+            methods: {
+                viewChange(e) {
+                    console.log(e);
+                }
+            }
+        })
+
+    </script>
+</body>
+
+</html>

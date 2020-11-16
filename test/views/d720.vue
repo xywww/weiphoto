@@ -1,10 +1,10 @@
 
 <template>
-  <div style="text-align:center">
+  <div style="text-align: center">
     <div>
       <!-- 720全景 -->
-      <!-- <wei-photo
-        style="width:90vw;height:90vh"
+      <wei-photo
+        style="width: 90vw; height: 90vh"
         ref="weiPhoto"
         v-wei-photo:photo="options"
         animationType="1"
@@ -12,35 +12,30 @@
         :panorama.sync="panorama"
         @viewChange="viewClick"
       >
-        <template slot="loading" slot-scope="{loadNum}"> 
-          <div style="width:100%;height:100%;background:red">
-            {{loadNum}}
-          </div>
-        </template>
         <wei-markers
-          v-for="(item,index) in markers"
+          v-for="(item, index) in markers"
           @over="over"
           @leave="leave"
           :config="item"
           :key="index"
         >
-          <div style="height: 60px;width: 60px;background: aliceblue;">{{item.title}}</div>
+          <div style="height: 60px; width: 60px; background: aliceblue">
+            {{ item.title }}
+          </div>
         </wei-markers>
-      </wei-photo> -->
-      <!-- svg标记点 -->
-      <!-- <wei-svg-edit
-        style="position:absolute;width:100%;height:100%"
-        ref="weiPhoto"
-        v-wei-photo:photo="options"
-        :panorama.sync="panorama"
-      ></wei-svg-edit> -->
+      </wei-photo>
       <div style="position">
-        <button @click="methodsPanorama">方法切换场景，带加载进度{{loadNum}}</button>
-        <button @click="panorama = panorama1">变量动态切换场景，无法监听加载进度</button>
+        <button @click="methodsPanorama">
+          方法切换场景，带加载进度{{ loadNum }}
+        </button>
+        <button @click="panorama = panorama1">
+          变量动态切换场景，无法监听加载进度
+        </button>
+         <button @click="autoRota">
+          自动旋转
+        </button>
       </div>
     </div>
-    <!-- 360度旋转 -->
-    <wei-360 :imgList="imgArr"  type="video" ref="wei360"></wei-360>
   </div>
 </template>
 
@@ -59,7 +54,6 @@ export default {
         //缓动
         moveInertia: true,
       },
-      imgArr: [],
       panorama: "",
       panorama1: require("../assets/p4.jpeg"),
       panorama2: require("../assets/p3.jpeg"),
@@ -97,11 +91,6 @@ export default {
     setTimeout(() => {
       this.panorama = require("../assets/indexBg.jpg");
     }, 2000);
-    let arr = [];
-    for (let i = 1; i <= 199; i++) {
-      arr.push(require(`../assets/fz/index_fz_${i}.jpg`));
-    }
-    this.imgArr = arr;
   },
   methods: {
     viewClick(data) {
@@ -115,6 +104,9 @@ export default {
     },
     leave(item) {
       console.log("离开", item.title);
+    },
+    autoRota(){
+      this.photo.autoRota()
     },
     methodsPanorama() {
       this.photo

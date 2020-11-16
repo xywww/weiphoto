@@ -3,6 +3,7 @@ import weimarkers from './wei-markers';
 import wei360 from './wei-360';
 import event from './event';
 import weisvg from './wei-svg-edit'
+import weivideo from './wei-video'
 let newEvent = new event();
 let obj = {
     install(Vue) {
@@ -11,6 +12,7 @@ let obj = {
         Vue.use(weiphoto);
         Vue.use(wei360);
         Vue.use(weisvg);
+        Vue.use(weivideo)
     }
 }
 

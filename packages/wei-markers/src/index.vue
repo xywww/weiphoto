@@ -1,5 +1,5 @@
 <template>
-  <div ref="marker" @click="markerClick" style="height: 1px;width: 1px;background: aliceblue;">
+  <div ref="marker" @click="markerClick" style="height: 1px;width: 1px;background:rgba(0,0,0,0)">
     <div class="markerContainer" :style="xyPosition">
       <slot></slot>
     </div>
@@ -63,14 +63,14 @@ export default {
         this.xyPosition = `transform: translate(${xy});`;
       }
 
-      let sj = String(parseInt(Math.random() * 1000000));
+      let ranDom = String(parseInt(Math.random() * 1000000));
       if (!config.id) {
-        config.id = "myId-" + sj;
+        config.id = "myId-" + ranDom;
       }
 
       config.$$el = this.$el;
       if (!config.polylineRad) {
-        config.html = '"<button>loading</button>"';
+        config.html = '';
       }
       this.$markersPlugin.addMarker(config);
 

@@ -4,6 +4,7 @@ component.install = function(Vue) {
     Vue.directive("wei-photo", {
         inserted: function(el, binding, vnode) {
             if (!vnode.child.viewer) {
+                vnode.child.isDirective = true;
                 vnode.context[binding.arg] = vnode.child.inits(binding.value);
             }
         }

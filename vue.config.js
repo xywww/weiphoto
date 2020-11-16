@@ -6,6 +6,7 @@ function resolve(dir) {
 }
 const join = path.join
 
+
 function getEntries(path) {
     let files = fs.readdirSync(resolve(path));
     const entries = files.reduce((ret, item) => {
@@ -68,12 +69,14 @@ const buildConfig = {
     },
     configureWebpack: {
         entry: {
-            ...getEntries('packages'),
+            ...getEntries('packages')
         },
         output: {
             filename: '[name]/index.js',
-
+            library:'weiPhoto',
             libraryTarget: 'umd',
+            //解构默认导出项
+            libraryExport: "default" 
         }
     },
     chainWebpack: config => {
