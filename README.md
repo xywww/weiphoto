@@ -1,4 +1,4 @@
-中文文档地址 <a href="http://weiPhoto.jsdoc.top">http://weiPhoto.jsdoc.top</a>
+中文文档地址 <a href="http://www.jsdoc.top">http://www.jsdoc.top</a>
 
 ## 安装依赖
 
