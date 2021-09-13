@@ -1,10 +1,9 @@
 中文文档地址 <a href="http://www.jsdoc.top">http://www.jsdoc.top</a>
 qq群 591170943
-  ![image](https://xuyawei123.oss-cn-shenzhen.aliyuncs.com/github/2021-09-13%2010.25.15.gif) 
+  ![image](https://camo.githubusercontent.com/f4009c9fd899d5454311ea8e09d899400a4b29fba231945f30a1c3341475ca2a/68747470733a2f2f787579617765693132332e6f73732d636e2d7368656e7a68656e2e616c6979756e63732e636f6d2f6769746875622f323032312d30392d313325323031302e32352e31352e676966) 
 
 <div style="display:flex">
   
-  <img style="height:200px" src="https://xuyawei123.oss-cn-shenzhen.aliyuncs.com/github/2021-09-13%2010.25.15.gif" />
 <img style="height:200px" src="https://xuyawei123.oss-cn-shenzhen.aliyuncs.com/WX20210913-100613%402x.png" />
 <img style="height:200px" src="https://xuyawei123.oss-cn-shenzhen.aliyuncs.com/WX20210913-101429%402x.png" />
 </div>
