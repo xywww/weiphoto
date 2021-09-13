@@ -1,7 +1,7 @@
 中文文档地址 <a href="http://www.jsdoc.top">http://www.jsdoc.top</a>
 qq群 591170943
 <div style="display:flex">
-<img style="height:200px" src="https://xuyawei123.oss-cn-shenzhen.aliyuncs.com/WX20210913-100428%402x.png" />
+<img style="height:200px" src="https://xuyawei123.oss-cn-shenzhen.aliyuncs.com/github/2021-09-13%2010.25.15.gif" />
 <img style="height:200px" src="https://xuyawei123.oss-cn-shenzhen.aliyuncs.com/WX20210913-100613%402x.png" />
 <img style="height:200px" src="https://xuyawei123.oss-cn-shenzhen.aliyuncs.com/WX20210913-101429%402x.png" />
 </div>
