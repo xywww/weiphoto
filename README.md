@@ -3,6 +3,7 @@ qq群 591170943
 <div style="display:flex">
 <img style="height:200px" src="https://xuyawei123.oss-cn-shenzhen.aliyuncs.com/WX20210913-100428%402x.png" />
 <img style="height:200px" src="https://xuyawei123.oss-cn-shenzhen.aliyuncs.com/WX20210913-100613%402x.png" />
+<img style="height:200px" src="https://xuyawei123.oss-cn-shenzhen.aliyuncs.com/WX20210913-101429%402x.png" />
 </div>
 
 ## 安装依赖
