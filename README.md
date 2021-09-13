@@ -1,5 +1,5 @@
 中文文档地址 <a href="http://www.jsdoc.top">http://www.jsdoc.top</a>
-
+qq群 591170943
 ## 安装依赖
 
 ```bash
